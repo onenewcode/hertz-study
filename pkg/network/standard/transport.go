@@ -50,6 +50,7 @@ type transport struct {
 	OnConnect        func(ctx context.Context, conn network.Conn) context.Context
 }
 
+// 开启服务
 func (t *transport) serve() (err error) {
 	network.UnlinkUdsFile(t.network, t.addr) //nolint:errcheck
 	t.lock.Lock()

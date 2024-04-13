@@ -40,14 +40,16 @@ func Default(opts ...config.Option) *Hertz {
 	return h
 }
 
+// 启动函数
 // Spin runs the server until catching os.Signal or error returned by h.Run().
 func (h *Hertz) Spin() {
 	errCh := make(chan error)
 	h.initOnRunHooks(errCh)
+	// 运行服务器，并监听错误
 	go func() {
 		errCh <- h.Run()
 	}()
-
+	// 关机信号量
 	signalWaiter := waitSignal
 	if h.signalWaiter != nil {
 		signalWaiter = h.signalWaiter
@@ -89,7 +91,7 @@ func waitSignal(errCh chan error) error {
 
 	signals := make(chan os.Signal, 1)
 	signal.Notify(signals, signalToNotify...)
-
+	// 开启监听
 	select {
 	case sig := <-signals:
 		switch sig {
@@ -109,6 +111,7 @@ func waitSignal(errCh chan error) error {
 	return nil
 }
 
+// 初始化运行回调函数
 func (h *Hertz) initOnRunHooks(errChan chan error) {
 	// add register func to runHooks
 	opt := h.GetOptions()

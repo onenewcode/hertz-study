@@ -327,7 +327,9 @@ func (engine *Engine) Run() (err error) {
 	return engine.listenAndServe()
 }
 
+// 初始化
 func (engine *Engine) Init() error {
+	// 设置使用的网络协议
 	// add built-in http1 server by default
 	if !engine.HasServer(suite.HTTP1) {
 		engine.AddProtocol(suite.HTTP1, factory.NewServerFactory(newHttp1OptionFromEngine(engine)))
@@ -1050,6 +1052,7 @@ func versionToALNP(v uint32) string {
 	return ""
 }
 
+// 标记引擎为正在运行
 // MarkAsRunning will mark the status of the hertz engine as "running".
 // Warning: do not call this method by yourself, unless you know what you are doing.
 func (engine *Engine) MarkAsRunning() (err error) {
