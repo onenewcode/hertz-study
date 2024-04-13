@@ -52,16 +52,16 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/cloudwego/hertz/pkg/common/bytebufferpool"
-	"github.com/cloudwego/hertz/pkg/common/compress"
-	"github.com/cloudwego/hertz/pkg/common/config"
-	"github.com/cloudwego/hertz/pkg/common/errors"
-	"github.com/cloudwego/hertz/pkg/common/utils"
-	"github.com/cloudwego/hertz/pkg/network"
-	"github.com/cloudwego/hertz/pkg/protocol/consts"
 	"hertz-study/internal/bytesconv"
 	"hertz-study/internal/bytestr"
 	"hertz-study/internal/nocopy"
+	"hertz-study/pkg/common/bytebufferpool"
+	"hertz-study/pkg/common/compress"
+	"hertz-study/pkg/common/config"
+	"hertz-study/pkg/common/errors"
+	"hertz-study/pkg/common/utils"
+	"hertz-study/pkg/network"
+	"hertz-study/pkg/protocol/consts"
 )
 
 var (

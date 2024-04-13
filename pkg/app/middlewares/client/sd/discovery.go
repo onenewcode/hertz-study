@@ -19,10 +19,10 @@ package sd
 import (
 	"context"
 
-	"github.com/cloudwego/hertz/pkg/app/client"
-	"github.com/cloudwego/hertz/pkg/app/client/discovery"
-	"github.com/cloudwego/hertz/pkg/app/client/loadbalance"
-	"github.com/cloudwego/hertz/pkg/protocol"
+	"hertz-study/pkg/app/client"
+	"hertz-study/pkg/app/client/discovery"
+	"hertz-study/pkg/app/client/loadbalance"
+	"hertz-study/pkg/protocol"
 )
 
 // Discovery will construct a middleware with BalancerFactory.

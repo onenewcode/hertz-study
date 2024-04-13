@@ -20,7 +20,7 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/cloudwego/hertz/pkg/common/errors"
+	"hertz-study/pkg/common/errors"
 )
 
 // EventIndex indicates a unique event.

@@ -42,8 +42,8 @@
 package render
 
 import (
-	"github.com/cloudwego/hertz/pkg/protocol"
 	"google.golang.org/protobuf/proto"
+	"hertz-study/pkg/protocol"
 )
 
 // ProtoBuf contains the given interface object.

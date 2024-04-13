@@ -1,42 +1,3 @@
-/*
- * Copyright 2022 CloudWeGo Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- * The MIT License (MIT)
- * Copyright (c) 2014 Manuel Martínez-Almeida
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * This file may have been modified by CloudWeGo authors. All CloudWeGo
- * Modifications are Copyright 2022 CloudWeGo Authors
- */
-
 package route
 
 import (
@@ -49,6 +10,23 @@ import (
 	"hertz-study/internal/bytestr"
 	"hertz-study/internal/nocopy"
 	internalStats "hertz-study/internal/stats"
+	"hertz-study/pkg/app"
+	"hertz-study/pkg/app/server/binding"
+	"hertz-study/pkg/app/server/render"
+	"hertz-study/pkg/common/config"
+	errs "hertz-study/pkg/common/errors"
+	"hertz-study/pkg/common/hlog"
+	"hertz-study/pkg/common/tracer"
+	"hertz-study/pkg/common/tracer/stats"
+	"hertz-study/pkg/common/tracer/traceinfo"
+	"hertz-study/pkg/common/utils"
+	"hertz-study/pkg/network"
+	"hertz-study/pkg/network/standard"
+	"hertz-study/pkg/protocol"
+	"hertz-study/pkg/protocol/consts"
+	"hertz-study/pkg/protocol/http1"
+	"hertz-study/pkg/protocol/http1/factory"
+	"hertz-study/pkg/protocol/suite"
 	"html/template"
 	"io"
 	"path/filepath"
@@ -57,28 +35,11 @@ import (
 	"strings"
 	"sync"
 	"sync/atomic"
-
-	"github.com/cloudwego/hertz/pkg/app"
-	"github.com/cloudwego/hertz/pkg/app/server/binding"
-	"github.com/cloudwego/hertz/pkg/app/server/render"
-	"github.com/cloudwego/hertz/pkg/common/config"
-	errs "github.com/cloudwego/hertz/pkg/common/errors"
-	"github.com/cloudwego/hertz/pkg/common/hlog"
-	"github.com/cloudwego/hertz/pkg/common/tracer"
-	"github.com/cloudwego/hertz/pkg/common/tracer/stats"
-	"github.com/cloudwego/hertz/pkg/common/tracer/traceinfo"
-	"github.com/cloudwego/hertz/pkg/common/utils"
-	"github.com/cloudwego/hertz/pkg/network"
-	"github.com/cloudwego/hertz/pkg/network/standard"
-	"github.com/cloudwego/hertz/pkg/protocol"
-	"github.com/cloudwego/hertz/pkg/protocol/consts"
-	"github.com/cloudwego/hertz/pkg/protocol/http1"
-	"github.com/cloudwego/hertz/pkg/protocol/http1/factory"
-	"github.com/cloudwego/hertz/pkg/protocol/suite"
 )
 
 const unknownTransporterName = "unknown"
 
+// 定义错误变量
 var (
 	defaultTransporter = standard.NewTransporter
 
@@ -93,6 +54,7 @@ var (
 	requiredHostBody = []byte("missing required Host header")
 )
 
+// 劫持连接，结构体
 type hijackConn struct {
 	network.Conn
 	e *Engine
@@ -102,6 +64,7 @@ type CtxCallback func(ctx context.Context)
 
 type CtxErrCallback func(ctx context.Context) error
 
+// RouteInfo 表示请求路由的规范，其中包含方法和路径及其处理程序。
 // RouteInfo represents a request route's specification which contains method and path and its handler.
 type RouteInfo struct {
 	Method      string
@@ -188,7 +151,7 @@ type Engine struct {
 
 	// Hook functions get triggered sequentially when engine start
 	OnRun []CtxErrCallback
-
+	// engine 关机时调用的函数
 	// Hook functions get triggered simultaneously when engine shutdown
 	OnShutdown []CtxCallback
 
@@ -679,12 +642,13 @@ func (engine *Engine) addRoute(method, path string, handlers app.HandlersChain) 
 	if !engine.options.DisablePrintRoute {
 		debugPrintRoute(method, path, handlers)
 	}
-
+	// trees按照方法类存储数组
 	methodRouter := engine.trees.get(method)
 	if methodRouter == nil {
 		methodRouter = &router{method: method, root: &node{}, hasTsrHandler: make(map[string]bool)}
 		engine.trees = append(engine.trees, methodRouter)
 	}
+	// 添加路由
 	methodRouter.addRoute(path, handlers)
 
 	// Update maxParams

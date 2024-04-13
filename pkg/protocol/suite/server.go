@@ -20,12 +20,12 @@ import (
 	"context"
 	"sync"
 
-	"github.com/cloudwego/hertz/pkg/app"
-	"github.com/cloudwego/hertz/pkg/common/errors"
-	"github.com/cloudwego/hertz/pkg/common/hlog"
-	"github.com/cloudwego/hertz/pkg/common/tracer"
-	"github.com/cloudwego/hertz/pkg/protocol"
-	"github.com/cloudwego/hertz/pkg/protocol/consts"
+	"hertz-study/pkg/app"
+	"hertz-study/pkg/common/errors"
+	"hertz-study/pkg/common/hlog"
+	"hertz-study/pkg/common/tracer"
+	"hertz-study/pkg/protocol"
+	"hertz-study/pkg/protocol/consts"
 )
 
 const (

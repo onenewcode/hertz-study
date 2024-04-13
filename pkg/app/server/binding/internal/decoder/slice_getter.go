@@ -41,9 +41,9 @@
 package decoder
 
 import (
-	"github.com/cloudwego/hertz/internal/bytesconv"
-	"github.com/cloudwego/hertz/pkg/protocol"
-	"github.com/cloudwego/hertz/pkg/route/param"
+	"hertz-study/internal/bytesconv"
+	"hertz-study/pkg/protocol"
+	"hertz-study/pkg/route/param"
 )
 
 type sliceGetter func(req *protocol.Request, params param.Params, key string, defaultValue ...string) (ret []string)

@@ -54,18 +54,18 @@ import (
 	"sync"
 	"time"
 
-	"github.com/cloudwego/hertz/pkg/app/server/binding"
-	"github.com/cloudwego/hertz/pkg/app/server/render"
-	"github.com/cloudwego/hertz/pkg/common/errors"
-	"github.com/cloudwego/hertz/pkg/common/tracer/traceinfo"
-	"github.com/cloudwego/hertz/pkg/common/utils"
-	"github.com/cloudwego/hertz/pkg/network"
-	"github.com/cloudwego/hertz/pkg/protocol"
-	"github.com/cloudwego/hertz/pkg/protocol/consts"
-	rConsts "github.com/cloudwego/hertz/pkg/route/consts"
-	"github.com/cloudwego/hertz/pkg/route/param"
 	"hertz-study/internal/bytesconv"
 	"hertz-study/internal/bytestr"
+	"hertz-study/pkg/app/server/binding"
+	"hertz-study/pkg/app/server/render"
+	"hertz-study/pkg/common/errors"
+	"hertz-study/pkg/common/tracer/traceinfo"
+	"hertz-study/pkg/common/utils"
+	"hertz-study/pkg/network"
+	"hertz-study/pkg/protocol"
+	"hertz-study/pkg/protocol/consts"
+	rConsts "hertz-study/pkg/route/consts"
+	"hertz-study/pkg/route/param"
 )
 
 var zeroTCPAddr = &net.TCPAddr{

@@ -6,9 +6,9 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/cloudwego/hertz/pkg/app"
-	"github.com/cloudwego/hertz/pkg/protocol/consts"
-	rConsts "github.com/cloudwego/hertz/pkg/route/consts"
+	"hertz-study/pkg/app"
+	"hertz-study/pkg/protocol/consts"
+	rConsts "hertz-study/pkg/route/consts"
 )
 
 // IRouter defines all router handle interface includes single and group router.
@@ -34,42 +34,53 @@ type IRoutes interface {
 	StaticFS(string, *app.FS) IRoutes
 }
 
+// 路由管理器
 // RouterGroup is used internally to configure router, a RouterGroup is associated with
 // a prefix and an array of handlers (middleware).
 type RouterGroup struct {
+	// 路由调用链
 	Handlers app.HandlersChain
+	// 基础路径
 	basePath string
-	engine   *Engine
-	root     bool
+	// 父引擎
+	engine *Engine
+	// 是否为根路由
+	root bool
 }
 
 var _ IRouter = (*RouterGroup)(nil)
 
+// 添加中间件
 // Use adds middleware to the group, see example code in GitHub.
 func (group *RouterGroup) Use(middleware ...app.HandlerFunc) IRoutes {
 	group.Handlers = append(group.Handlers, middleware...)
 	return group.returnObj()
 }
 
+// 创建新的路由组
 // Group creates a new router group. You should add all the routes that have common middlewares or the same path prefix.
 // For example, all the routes that use a common middleware for authorization could be grouped.
 func (group *RouterGroup) Group(relativePath string, handlers ...app.HandlerFunc) *RouterGroup {
 	return &RouterGroup{
+		// 与符路由，合成整个路由路径
 		Handlers: group.combineHandlers(handlers),
 		basePath: group.calculateAbsolutePath(relativePath),
 		engine:   group.engine,
 	}
 }
 
+// 获取路由的基础路径
 // BasePath returns the base path of router group.
 // For example, if v := router.Group("/rest/n/v1/api"), v.BasePath() is "/rest/n/v1/api".
 func (group *RouterGroup) BasePath() string {
 	return group.basePath
 }
 
+// 由不同的方法调用
 func (group *RouterGroup) handle(httpMethod, relativePath string, handlers app.HandlersChain) IRoutes {
 	absolutePath := group.calculateAbsolutePath(relativePath)
 	handlers = group.combineHandlers(handlers)
+	// 在engine添加路由
 	group.engine.addRoute(httpMethod, absolutePath, handlers)
 	return group.returnObj()
 }

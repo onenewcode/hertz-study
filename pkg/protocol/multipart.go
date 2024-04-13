@@ -51,10 +51,10 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/cloudwego/hertz/pkg/common/bytebufferpool"
-	"github.com/cloudwego/hertz/pkg/common/utils"
-	"github.com/cloudwego/hertz/pkg/network"
-	"github.com/cloudwego/hertz/pkg/protocol/consts"
+	"hertz-study/pkg/common/bytebufferpool"
+	"hertz-study/pkg/common/utils"
+	"hertz-study/pkg/network"
+	"hertz-study/pkg/protocol/consts"
 )
 
 func ReadMultipartForm(r io.Reader, boundary string, size, maxInMemoryFileSize int) (*multipart.Form, error) {

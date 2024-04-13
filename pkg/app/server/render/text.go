@@ -44,7 +44,7 @@ package render
 import (
 	"fmt"
 
-	"github.com/cloudwego/hertz/pkg/protocol"
+	"hertz-study/pkg/protocol"
 )
 
 // String contains the given interface object slice and its format.

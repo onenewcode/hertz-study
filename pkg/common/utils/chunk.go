@@ -21,10 +21,10 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/cloudwego/hertz/internal/bytesconv"
-	"github.com/cloudwego/hertz/internal/bytestr"
-	"github.com/cloudwego/hertz/pkg/common/errors"
-	"github.com/cloudwego/hertz/pkg/network"
+	"hertz-study/internal/bytesconv"
+	"hertz-study/internal/bytestr"
+	"hertz-study/pkg/common/errors"
+	"hertz-study/pkg/network"
 )
 
 var errBrokenChunk = errors.NewPublic("cannot find crlf at the end of chunk")

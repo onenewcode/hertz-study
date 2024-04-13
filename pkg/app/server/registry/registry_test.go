@@ -19,7 +19,7 @@ package registry
 import (
 	"testing"
 
-	"github.com/cloudwego/hertz/pkg/common/test/assert"
+	"hertz-study/pkg/common/test/assert"
 )
 
 func TestNoopRegistry(t *testing.T) {

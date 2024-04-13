@@ -19,7 +19,7 @@ package tracer
 import (
 	"context"
 
-	"github.com/cloudwego/hertz/pkg/app"
+	"hertz-study/pkg/app"
 )
 
 // Tracer is executed at the start and finish of an HTTP.

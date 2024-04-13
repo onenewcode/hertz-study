@@ -45,8 +45,8 @@ import (
 	"mime/multipart"
 	"reflect"
 
-	"github.com/cloudwego/hertz/pkg/protocol"
-	"github.com/cloudwego/hertz/pkg/route/param"
+	"hertz-study/pkg/protocol"
+	"hertz-study/pkg/route/param"
 )
 
 type fieldDecoder interface {

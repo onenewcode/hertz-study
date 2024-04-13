@@ -22,11 +22,11 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/cloudwego/hertz/pkg/app"
-	"github.com/cloudwego/hertz/pkg/common/config"
-	"github.com/cloudwego/hertz/pkg/common/test/assert"
-	"github.com/cloudwego/hertz/pkg/protocol/consts"
-	"github.com/cloudwego/hertz/pkg/route"
+	"hertz-study/pkg/app"
+	"hertz-study/pkg/common/config"
+	"hertz-study/pkg/common/test/assert"
+	"hertz-study/pkg/protocol/consts"
+	"hertz-study/pkg/route"
 )
 
 func newTestEngine() *route.Engine {

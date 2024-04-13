@@ -48,13 +48,13 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/cloudwego/hertz/internal/bytesconv"
-	"github.com/cloudwego/hertz/internal/bytestr"
-	"github.com/cloudwego/hertz/internal/nocopy"
-	errs "github.com/cloudwego/hertz/pkg/common/errors"
-	"github.com/cloudwego/hertz/pkg/common/hlog"
-	"github.com/cloudwego/hertz/pkg/common/utils"
-	"github.com/cloudwego/hertz/pkg/protocol/consts"
+	"hertz-study/internal/bytesconv"
+	"hertz-study/internal/bytestr"
+	"hertz-study/internal/nocopy"
+	errs "hertz-study/pkg/common/errors"
+	"hertz-study/pkg/common/hlog"
+	"hertz-study/pkg/common/utils"
+	"hertz-study/pkg/protocol/consts"
 )
 
 var (

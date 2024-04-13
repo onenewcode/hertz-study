@@ -43,8 +43,8 @@ package decoder
 import (
 	"reflect"
 
-	"github.com/cloudwego/hertz/pkg/protocol"
-	"github.com/cloudwego/hertz/pkg/route/param"
+	"hertz-study/pkg/protocol"
+	"hertz-study/pkg/route/param"
 )
 
 type CustomizeDecodeFunc func(req *protocol.Request, params param.Params, text string) (reflect.Value, error)

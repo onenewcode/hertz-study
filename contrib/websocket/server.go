@@ -14,9 +14,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/cloudwego/hertz/pkg/app"
-	"github.com/cloudwego/hertz/pkg/network"
-	"github.com/cloudwego/hertz/pkg/protocol/consts"
+	"hertz-study/pkg/app"
+	"hertz-study/pkg/network"
+	"hertz-study/pkg/protocol/consts"
 )
 
 const badHandshake = "websocket: the client is not using the websocket protocol: "

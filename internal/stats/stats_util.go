@@ -17,8 +17,8 @@
 package stats
 
 import (
-	"github.com/cloudwego/hertz/pkg/common/tracer/stats"
-	"github.com/cloudwego/hertz/pkg/common/tracer/traceinfo"
+	"hertz-study/pkg/common/tracer/stats"
+	"hertz-study/pkg/common/tracer/traceinfo"
 )
 
 // Record records the event to HTTPStats.

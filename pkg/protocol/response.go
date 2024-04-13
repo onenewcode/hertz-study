@@ -46,12 +46,12 @@ import (
 	"net"
 	"sync"
 
-	"github.com/cloudwego/hertz/pkg/common/bytebufferpool"
-	"github.com/cloudwego/hertz/pkg/common/compress"
-	"github.com/cloudwego/hertz/pkg/common/utils"
-	"github.com/cloudwego/hertz/pkg/network"
 	"hertz-study/internal/bytesconv"
 	"hertz-study/internal/nocopy"
+	"hertz-study/pkg/common/bytebufferpool"
+	"hertz-study/pkg/common/compress"
+	"hertz-study/pkg/common/utils"
+	"hertz-study/pkg/network"
 )
 
 var (

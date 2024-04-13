@@ -30,14 +30,14 @@ import (
 	"encoding/base64"
 	"time"
 
-	"github.com/cloudwego/hertz/pkg/common/errors"
-	"github.com/cloudwego/hertz/pkg/network"
-	"github.com/cloudwego/hertz/pkg/protocol"
-	"github.com/cloudwego/hertz/pkg/protocol/consts"
-	reqI "github.com/cloudwego/hertz/pkg/protocol/http1/req"
-	respI "github.com/cloudwego/hertz/pkg/protocol/http1/resp"
 	"hertz-study/internal/bytesconv"
 	"hertz-study/internal/bytestr"
+	"hertz-study/pkg/common/errors"
+	"hertz-study/pkg/network"
+	"hertz-study/pkg/protocol"
+	"hertz-study/pkg/protocol/consts"
+	reqI "hertz-study/pkg/protocol/http1/req"
+	respI "hertz-study/pkg/protocol/http1/resp"
 )
 
 func SetupProxy(conn network.Conn, addr string, proxyURI *protocol.URI, tlsConfig *tls.Config, isTLS bool, dialer network.Dialer) (network.Conn, error) {

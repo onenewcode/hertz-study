@@ -21,10 +21,10 @@ import (
 	"strings"
 	"syscall"
 
-	errs "github.com/cloudwego/hertz/pkg/common/errors"
-	"github.com/cloudwego/hertz/pkg/common/hlog"
-	"github.com/cloudwego/hertz/pkg/network"
 	"github.com/cloudwego/netpoll"
+	errs "hertz-study/pkg/common/errors"
+	"hertz-study/pkg/common/hlog"
+	"hertz-study/pkg/network"
 )
 
 type Conn struct {

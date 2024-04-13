@@ -21,7 +21,7 @@ import (
 	"net"
 	"time"
 
-	"github.com/cloudwego/hertz/pkg/network"
+	"hertz-study/pkg/network"
 )
 
 var defaultDialer network.Dialer

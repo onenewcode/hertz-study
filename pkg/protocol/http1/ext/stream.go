@@ -46,12 +46,12 @@ import (
 	"io"
 	"sync"
 
-	"github.com/cloudwego/hertz/pkg/common/bytebufferpool"
-	errs "github.com/cloudwego/hertz/pkg/common/errors"
-	"github.com/cloudwego/hertz/pkg/common/utils"
-	"github.com/cloudwego/hertz/pkg/network"
-	"github.com/cloudwego/hertz/pkg/protocol"
 	"hertz-study/internal/bytestr"
+	"hertz-study/pkg/common/bytebufferpool"
+	errs "hertz-study/pkg/common/errors"
+	"hertz-study/pkg/common/utils"
+	"hertz-study/pkg/network"
+	"hertz-study/pkg/protocol"
 )
 
 var (
@@ -64,7 +64,7 @@ var (
 	}
 )
 
-// Deprecated: Use github.com/cloudwego/hertz/pkg/protocol.NoBody instead.
+// Deprecated: Use hertz-study/pkg/protocol.NoBody instead.
 var NoBody = protocol.NoBody
 
 type bodyStream struct {

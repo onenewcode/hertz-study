@@ -23,9 +23,9 @@ import (
 	"strings"
 	"time"
 
-	errs "github.com/cloudwego/hertz/pkg/common/errors"
-	"github.com/cloudwego/hertz/pkg/network"
 	"github.com/cloudwego/netpoll"
+	errs "hertz-study/pkg/common/errors"
+	"hertz-study/pkg/network"
 )
 
 var (

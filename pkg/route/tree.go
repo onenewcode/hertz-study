@@ -1,44 +1,3 @@
-/*
- * Copyright 2022 CloudWeGo Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * The MIT License (MIT)
- *
- * Copyright (c) 2021 LabStack
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * This file may have been modified by CloudWeGo authors. All CloudWeGo
- * Modifications are Copyright 2022 CloudWeGo Authors.
- */
-
 package route
 
 import (
@@ -48,10 +7,10 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/cloudwego/hertz/pkg/app"
-	"github.com/cloudwego/hertz/pkg/route/param"
 	"hertz-study/internal/bytesconv"
 	"hertz-study/internal/bytestr"
+	"hertz-study/pkg/app"
+	"hertz-study/pkg/route/param"
 )
 
 type router struct {
@@ -160,10 +119,10 @@ func (r *router) addRoute(path string, h app.HandlersChain) {
 	if h == nil {
 		panic(fmt.Sprintf("Adding route without handler function: %v", path))
 	}
-
+	// 添加非静态路由的前静态路由部分，经行遍历
 	// Add the front static route part of a non-static route
 	for i, lcpIndex := 0, len(path); i < lcpIndex; i++ {
-		// param route
+		// param route , 用于获取:param 的参数
 		if path[i] == paramLabel {
 			j := i + 1
 
@@ -202,6 +161,7 @@ func (r *router) insert(path string, h app.HandlersChain, t kind, ppath string, 
 
 	for {
 		searchLen := len(search)
+		// 前缀长度
 		prefixLen := len(currentNode.prefix)
 		lcpLen := 0
 
@@ -209,9 +169,10 @@ func (r *router) insert(path string, h app.HandlersChain, t kind, ppath string, 
 		if searchLen < max {
 			max = searchLen
 		}
+		// 判断前缀最后相同的索引位置
 		for ; lcpLen < max && search[lcpLen] == currentNode.prefix[lcpLen]; lcpLen++ {
 		}
-
+		//  lcpLen == 0 说明是根节点
 		if lcpLen == 0 {
 			// At root node
 			currentNode.label = search[0]
@@ -223,7 +184,8 @@ func (r *router) insert(path string, h app.HandlersChain, t kind, ppath string, 
 				currentNode.pnames = pnames
 			}
 			currentNode.isLeaf = currentNode.children == nil && currentNode.paramChild == nil && currentNode.anyChild == nil
-		} else if lcpLen < prefixLen {
+		} else if lcpLen < prefixLen { // 说明生成的router，公共前缀更短，需要放在前面
+			// 拆分节点
 			// Split node
 			n := newNode(
 				currentNode.kind,
@@ -246,7 +208,7 @@ func (r *router) insert(path string, h app.HandlersChain, t kind, ppath string, 
 			if currentNode.anyChild != nil {
 				currentNode.anyChild.parent = n
 			}
-
+			// 重置父节点
 			// Reset parent node
 			currentNode.kind = skind
 			currentNode.label = currentNode.prefix[0]
@@ -261,7 +223,7 @@ func (r *router) insert(path string, h app.HandlersChain, t kind, ppath string, 
 
 			// Only Static children could reach here
 			currentNode.children = append(currentNode.children, n)
-
+			// 最大公共前缀等于搜索路径
 			if lcpLen == searchLen {
 				// At parent node
 				currentNode.kind = t

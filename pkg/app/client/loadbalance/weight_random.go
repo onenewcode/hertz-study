@@ -20,9 +20,9 @@ import (
 	"sync"
 
 	"github.com/bytedance/gopkg/lang/fastrand"
-	"github.com/cloudwego/hertz/pkg/app/client/discovery"
-	"github.com/cloudwego/hertz/pkg/common/hlog"
 	"golang.org/x/sync/singleflight"
+	"hertz-study/pkg/app/client/discovery"
+	"hertz-study/pkg/common/hlog"
 )
 
 type weightedBalancer struct {

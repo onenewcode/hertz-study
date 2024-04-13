@@ -19,7 +19,7 @@ package traceinfo
 import (
 	"time"
 
-	"github.com/cloudwego/hertz/pkg/common/tracer/stats"
+	"hertz-study/pkg/common/tracer/stats"
 )
 
 // HTTPStats is used to collect statistics about the HTTP.

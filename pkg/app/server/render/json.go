@@ -45,8 +45,8 @@ import (
 	"bytes"
 	"encoding/json"
 
-	hjson "github.com/cloudwego/hertz/pkg/common/json"
-	"github.com/cloudwego/hertz/pkg/protocol"
+	hjson "hertz-study/pkg/common/json"
+	"hertz-study/pkg/protocol"
 )
 
 // JSONMarshaler customize json.Marshal as you like

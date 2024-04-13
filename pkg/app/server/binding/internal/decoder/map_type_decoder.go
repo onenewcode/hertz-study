@@ -44,10 +44,10 @@ import (
 	"fmt"
 	"reflect"
 
-	hJson "github.com/cloudwego/hertz/pkg/common/json"
-	"github.com/cloudwego/hertz/pkg/protocol"
-	"github.com/cloudwego/hertz/pkg/route/param"
 	"hertz-study/internal/bytesconv"
+	hJson "hertz-study/pkg/common/json"
+	"hertz-study/pkg/protocol"
+	"hertz-study/pkg/route/param"
 )
 
 type mapTypeFieldTextDecoder struct {

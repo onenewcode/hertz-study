@@ -24,10 +24,10 @@ import (
 	"strings"
 
 	"github.com/bytedance/sonic"
-	"github.com/cloudwego/hertz/internal/bytesconv"
-	"github.com/cloudwego/hertz/pkg/common/utils"
-	"github.com/cloudwego/hertz/pkg/protocol"
-	"github.com/cloudwego/hertz/pkg/protocol/consts"
+	"hertz-study/internal/bytesconv"
+	"hertz-study/pkg/common/utils"
+	"hertz-study/pkg/protocol"
+	"hertz-study/pkg/protocol/consts"
 )
 
 func checkRequireJSON(req *protocol.Request, tagInfo TagInfo) bool {

@@ -20,9 +20,9 @@ import (
 	"net"
 	"time"
 
-	"github.com/cloudwego/hertz/pkg/common/errors"
-	"github.com/cloudwego/hertz/pkg/network"
 	"github.com/cloudwego/netpoll"
+	"hertz-study/pkg/common/errors"
+	"hertz-study/pkg/network"
 )
 
 var errNotSupportTLS = errors.NewPublic("not support tls")

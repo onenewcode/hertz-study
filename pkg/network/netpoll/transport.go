@@ -25,10 +25,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/cloudwego/hertz/pkg/common/config"
-	"github.com/cloudwego/hertz/pkg/common/hlog"
-	"github.com/cloudwego/hertz/pkg/network"
 	"github.com/cloudwego/netpoll"
+	"hertz-study/pkg/common/config"
+	"hertz-study/pkg/common/hlog"
+	"hertz-study/pkg/network"
 )
 
 func init() {

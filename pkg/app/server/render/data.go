@@ -41,7 +41,7 @@
 
 package render
 
-import "github.com/cloudwego/hertz/pkg/protocol"
+import "hertz-study/pkg/protocol"
 
 // Data contains ContentType and bytes data.
 type Data struct {

@@ -17,9 +17,9 @@
 package factory
 
 import (
-	"github.com/cloudwego/hertz/pkg/protocol/client"
-	"github.com/cloudwego/hertz/pkg/protocol/http1"
-	"github.com/cloudwego/hertz/pkg/protocol/suite"
+	"hertz-study/pkg/protocol/client"
+	"hertz-study/pkg/protocol/http1"
+	"hertz-study/pkg/protocol/suite"
 )
 
 var _ suite.ClientFactory = (*clientFactory)(nil)

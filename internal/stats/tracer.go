@@ -20,10 +20,10 @@ import (
 	"context"
 	"runtime/debug"
 
-	"github.com/cloudwego/hertz/pkg/app"
-	"github.com/cloudwego/hertz/pkg/common/hlog"
-	"github.com/cloudwego/hertz/pkg/common/tracer"
-	"github.com/cloudwego/hertz/pkg/common/tracer/stats"
+	"hertz-study/pkg/app"
+	"hertz-study/pkg/common/hlog"
+	"hertz-study/pkg/common/tracer"
+	"hertz-study/pkg/common/tracer/stats"
 )
 
 // Controller controls tracers.

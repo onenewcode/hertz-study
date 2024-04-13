@@ -20,7 +20,7 @@ import (
 	"bytes"
 	"net/http"
 
-	"github.com/cloudwego/hertz/pkg/protocol"
+	"hertz-study/pkg/protocol"
 )
 
 // GetCompatRequest only support basic function of Request, not for all.

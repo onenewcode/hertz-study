@@ -48,14 +48,14 @@ import (
 	"io"
 	"strings"
 
-	errs "github.com/cloudwego/hertz/pkg/common/errors"
-	"github.com/cloudwego/hertz/pkg/common/utils"
-	"github.com/cloudwego/hertz/pkg/network"
-	"github.com/cloudwego/hertz/pkg/protocol"
-	"github.com/cloudwego/hertz/pkg/protocol/consts"
-	"github.com/cloudwego/hertz/pkg/protocol/http1/ext"
 	"hertz-study/internal/bytesconv"
 	"hertz-study/internal/bytestr"
+	errs "hertz-study/pkg/common/errors"
+	"hertz-study/pkg/common/utils"
+	"hertz-study/pkg/network"
+	"hertz-study/pkg/protocol"
+	"hertz-study/pkg/protocol/consts"
+	"hertz-study/pkg/protocol/http1/ext"
 )
 
 var errTimeout = errs.New(errs.ErrTimeout, errs.ErrorTypePublic, "read response header")

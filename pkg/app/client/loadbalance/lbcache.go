@@ -23,11 +23,11 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/cloudwego/hertz/pkg/app/client/discovery"
-	"github.com/cloudwego/hertz/pkg/common/errors"
-	"github.com/cloudwego/hertz/pkg/common/hlog"
-	"github.com/cloudwego/hertz/pkg/protocol"
 	"golang.org/x/sync/singleflight"
+	"hertz-study/pkg/app/client/discovery"
+	"hertz-study/pkg/common/errors"
+	"hertz-study/pkg/common/hlog"
+	"hertz-study/pkg/protocol"
 )
 
 type cacheResult struct {

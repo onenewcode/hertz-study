@@ -48,10 +48,10 @@ import (
 	"io"
 	"sync"
 
-	"github.com/cloudwego/hertz/pkg/common/bytebufferpool"
-	"github.com/cloudwego/hertz/pkg/common/stackless"
-	"github.com/cloudwego/hertz/pkg/common/utils"
-	"github.com/cloudwego/hertz/pkg/network"
+	"hertz-study/pkg/common/bytebufferpool"
+	"hertz-study/pkg/common/stackless"
+	"hertz-study/pkg/common/utils"
+	"hertz-study/pkg/network"
 )
 
 const CompressDefaultCompression = 6 // flate.DefaultCompression

@@ -20,11 +20,11 @@ import (
 	"fmt"
 	"reflect"
 
-	"github.com/cloudwego/hertz/internal/bytesconv"
-	"github.com/cloudwego/hertz/pkg/common/hlog"
-	hjson "github.com/cloudwego/hertz/pkg/common/json"
-	"github.com/cloudwego/hertz/pkg/protocol"
-	"github.com/cloudwego/hertz/pkg/route/param"
+	"hertz-study/internal/bytesconv"
+	"hertz-study/pkg/common/hlog"
+	hjson "hertz-study/pkg/common/json"
+	"hertz-study/pkg/protocol"
+	"hertz-study/pkg/route/param"
 )
 
 type structTypeFieldTextDecoder struct {

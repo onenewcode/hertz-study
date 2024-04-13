@@ -23,13 +23,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/cloudwego/hertz/pkg/app/server/binding"
-	"github.com/cloudwego/hertz/pkg/app/server/registry"
-	"github.com/cloudwego/hertz/pkg/common/config"
-	"github.com/cloudwego/hertz/pkg/common/tracer"
-	"github.com/cloudwego/hertz/pkg/common/tracer/stats"
-	"github.com/cloudwego/hertz/pkg/network"
-	"github.com/cloudwego/hertz/pkg/network/standard"
+	"hertz-study/pkg/app/server/binding"
+	"hertz-study/pkg/app/server/registry"
+	"hertz-study/pkg/common/config"
+	"hertz-study/pkg/common/tracer"
+	"hertz-study/pkg/common/tracer/stats"
+	"hertz-study/pkg/network"
+	"hertz-study/pkg/network/standard"
 )
 
 // WithKeepAliveTimeout sets keep-alive timeout.

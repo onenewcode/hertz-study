@@ -17,7 +17,7 @@
 package route
 
 import (
-	"github.com/cloudwego/hertz/pkg/network/standard"
+	"hertz-study/pkg/network/standard"
 )
 
 func init() {

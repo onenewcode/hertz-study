@@ -23,9 +23,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/cloudwego/hertz/pkg/common/config"
-	"github.com/cloudwego/hertz/pkg/common/hlog"
-	"github.com/cloudwego/hertz/pkg/network"
+	"hertz-study/pkg/common/config"
+	"hertz-study/pkg/common/hlog"
+	"hertz-study/pkg/network"
 )
 
 type transport struct {

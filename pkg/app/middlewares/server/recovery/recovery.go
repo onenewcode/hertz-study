@@ -23,7 +23,7 @@ import (
 	"io/ioutil"
 	"runtime"
 
-	"github.com/cloudwego/hertz/pkg/app"
+	"hertz-study/pkg/app"
 )
 
 var (
